@@ -29,9 +29,18 @@ a.disabled {
 .nav-tabs, button {
   background-color: #5b6365;
 }
+.tablist {
+  background-color: #192525;
+}
+.tablist .nav-link {
+  color: #fff;
+}
+.tablist .nav-link.active {
+  background-color: #5b6365;
+}
 .form-control:focus {
-  border-color: #192525;
-  box-shadow: 0 0 0 0.2rem rgba(25, 37, 37, 0.25);
+  border-color: #5a9c92;
+  box-shadow: 0 0 0 0.2rem rgba(90, 156, 146, 0.25);
 }
 label, select, option, a {
   color: #242b31;
@@ -54,6 +63,7 @@ select {
 .buttons {
   padding-bottom: 30px;
   margin-bottom: 30px;
+  margin-right: 10px;
 }
 #inputUpload {
   display: block;
@@ -61,4 +71,26 @@ select {
   background-color: #fff;
   border-radius: 3px;
   border-color: #ced4da;
+}
+.form-group {
+  padding: 15px;
+}
+.tab-pane {
+  max-height: 330px;
+  height: 330px;
+}
+
+.footer {
+  border-top: 1px solid #5a9c92;
+  width: 100%;
+  margin-top: 130px;
+  background-color: #5a9c92;
+  border-bottom: 2px solid #fff;
+  border-top: 1px solid #242b31;
+  padding: 0.5rem;
+}
+.footer .container {
+  color: #242b31;  
+  background-color: #5a9c92;
+  border-top: 1px solid #fff;
 }
