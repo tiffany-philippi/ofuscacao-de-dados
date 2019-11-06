@@ -132,8 +132,7 @@
               
               
             }
-          
+            $txtDesofuscado = $destino;
         }
-        // echo $destino;
-        echo '{"resultado": "' .  $origem .'"}';
+        echo '{"sucesso":"true", "origem":"'. $txtDesofuscado . '"}';
 ?>
