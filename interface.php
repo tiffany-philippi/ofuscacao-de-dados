@@ -11,29 +11,31 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<!-- SCRIPT DE FUNCOES AJAx -->
 	<script>
-		// CONSTRUTOR DO JQUERY
-		$(document).ready(function() {
-			$('#bt_carregar').click(function() {
+$(document).ready(function(){
 
-				var input_original = $('#origem').val();
-				$.ajax({
-					url: 'percentDecrypt.php',
-					data: {
-						original: input_original
-					},
-					timeout: 1200000,
-					async: true,
-					type: 'POST',
-					dataType: 'json',
-					success: function(retorno) {
-						//alert(retorno.resultado);
-						$('#destino').html(retorno.resultado);
-					}
+
+	$('#bt_loadURL').click(function(){
+		var original = $('#origem').val();
+		$.ajax({
+			url: 'percentDecrypt.php',
+			data: {texto: original},
+			timeout: 1200000,
+			async: false,
+			type: 'POST',
+			dataType: 'json',
+			success: function(retorno) {
+				if(retorno.sucesso == 'true'){
+					$('#resultURL').val(retorno.original);
+				}else {
+					$('#resultURL').val("ERROR!");
 				}
 			}
-		}
-	}
-?>
+		})
+	});
+
+
+});
+</script>
 
 
 <html lang="pt-br">
@@ -99,11 +101,11 @@
         </div>
         <div class="form-group">
             <label for="res">Resultado:</label>
-            <input type="text" name="result" class="form-control">
+            <input type="text" name="resultURL" id="resultURL" class="form-control">
         </div>
 
         <div class="buttons">
-            <button type="submit" id="bt_loading" class="btn float">Carregar</button>
+            <button type="button" id="bt_loadURL" class="btn float">Carregar</button>
             <button type="reset" class="btn float">Cancelar</button>
         </div>
 
@@ -120,7 +122,7 @@
     </div>
 
     <div class="buttons">
-        <button type="submit" id="bt_loading" class="btn float">Carregar</button>
+        <button type="button" id="bt_loading" class="btn float">Carregar</button>
         <button type="reset" class="btn float">Cancelar</button>
     </div>
 
