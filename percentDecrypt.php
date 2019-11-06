@@ -110,15 +110,16 @@
               if($array[$i] != '%'){
                 $destino .= $array[$i];
               } else {
-                $char = $array[$i];
+                $char0 = $array[$i];
                 $estado++;
               }
-            if($estado == 1){
+            if($estado == 1){              
+              $char = $char0;
               $j = $i;
               $char .= $array[$j+1];
               $char .= $array[$j+2];
               
-              if(preg_match_all($pattern, $char, $chaves, PREG_SET_ORDER, 0)){
+              if(preg_match($pattern, $char)){
               $charDecrypt = str_replace(array_values($array_from_to), array_keys($array_from_to), $char);
               
               $destino .= $charDecrypt;
@@ -126,11 +127,11 @@
               $i++;
     
               $estado=0;
-              }
-              
-             }
-              
-              
+              } else {
+                  $destino .= $array[$i];
+                  $estado=0;
+              }               
+             }              
             }
             $txtDesofuscado = $destino;
         }
