@@ -1,11 +1,12 @@
 <html lang="pt-br">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Desofuscando URLs</title>
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -13,41 +14,51 @@
 	<script>
 $(document).ready(function(){
 
+	
+	
+	$('#btn_carregarURL').click(function(){
+	var select = $('#opcoes').val();
+	switch(select)
+	{
+	case 'percent': 
+	percent();
+	break;
+	case 'ampersan':
+	ampersan();
+	break;
+	case 'char':
+	char();
+	break;
+	default:
+	alert("Selecione uma Opção Valida!");
+	break;
+	}
+	});
 
-	$('#bt_loadURL').click(function(){
-		var original = $('#origem').val();
+	function percent(){
+		var novo_texto = $('#origem').val();
 		$.ajax({
 			url: 'percentDecrypt.php',
-			data: {texto: original},
+			data: {texto: novo_texto},
 			timeout: 1200000,
 			async: false,
 			type: 'POST',
 			dataType: 'json',
 			success: function(retorno) {
 				if(retorno.sucesso == 'true'){
-					$('#resultURL').val(retorno.original);
+					$('#resultURL').val(retorno.novo_texto);
 				}else {
-					$('#resultURL').val("ERROR!");
+					$('#resultURL').html("deu errado");
 				}
 			}
 		})
-	});
+	}
+	
 
 
 });
 </script>
-
-
-<html lang="pt-br">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Desofuscando URLs</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
 </head>
-
 <body>
 	<div class="title">
 		<h1>Desofuscamento de Dados</h1>
@@ -90,12 +101,13 @@ $(document).ready(function(){
             <label>URL:</label>
             <div class="url">
 
-                <select name="select">
-                    <option value="select">Selecione a linguagem</option>
-                    <option value="hexa">Hexa</option>
-                    <option value="bi">Bi</option>
+                <select name="select" id="opcoes">
+                    <option value="0">Selecione a linguagem</option>
+					<option value="percent">Percent Code</option>
+                    <option value="ampersan">HTML Entities</option>
+                    <option value="char">ASCII Code</option>
                 </select>
-                <input type="text" name="origem" class="form-control origem">
+                <input type="text" name="origem" id="origem" class="form-control origem">
 
             </div>
         </div>
@@ -105,7 +117,7 @@ $(document).ready(function(){
         </div>
 
         <div class="buttons">
-            <button type="button" id="bt_loadURL" class="btn float">Carregar</button>
+		    <button type="button" id="btn_carregarURL" name="btn_carregarURL" class="btn float">Carregar</button>
             <button type="reset" class="btn float">Cancelar</button>
         </div>
 
