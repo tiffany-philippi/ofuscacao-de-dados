@@ -96,7 +96,7 @@
         '~' => '%7e');
     
         
-            $origem = $_POST["original"];
+            $origem = $_POST["texto"];
             $array = str_split($origem);
             $i = 0;
             $estado = 0;
@@ -134,5 +134,5 @@
             }
             $txtDesofuscado = $destino;
         }
-        echo '{"sucesso":"true", "origem":"'. $txtDesofuscado . '"}';
+        echo '{"sucesso":"true", "novo_texto":"'. $txtDesofuscado . '"}';
 ?>
