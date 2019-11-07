@@ -1,108 +1,25 @@
 <?php
-        $array_from_to =  array(' ' => '%20',
-        '!' => '%21',
-        '\'' => '%22',
-        '#' => '%23',
-        '\\$' => '%24',
-        '%' => '%25',
-        '&' => '%26',
-        "'" => '%27',
-        '' => '%28',
-        ')' => '%29',
-        '*' => '%2a',
-        '+' => '%2b',
-        ' =>' => '%2c',
-        '~' => '%2d',
-        '.' => '%2e',
-        '/' => '%2f',
-        '0' => '%30',
-        '1' => '%31',
-        '2' => '%32',
-        '3' => '%33',
-        '4' => '%34',
-        '5' => '%35',
-        '6' => '%36',
-        '7' => '%37',
-        '8' => '%38',
-        '9' => '%39',
-        ':' => '%3a',
-        ';' => '%3b',
-        '<' => '%3c',
-        '=' => '%3d',
-        '>' => '%3e',
-        '?' => '%3f',
-        '@' => '%40',
-        'A' => '%41',
-        'B' => '%42',
-        'C' => '%43',
-        'D' => '%44',
-        'E' => '%45',
-        'F' => '%46',
-        'G' => '%47',
-        'H' => '%48',
-        'I' => '%49',
-        'J' => '%4a',
-        'K' => '%4b',
-        'L' => '%4c',
-        'M' => '%4d',
-        'N' => '%4e',
-        'O' => '%4f',
-        'P' => '%50',
-        'Q' => '%51',
-        'R' => '%52',
-        'S' => '%53',
-        'T' => '%54',
-        'U' => '%55',
-        'V' => '%56',
-        'W' => '%57',
-        'X' => '%58',
-        'Y' => '%59',
-        'Z' => '%5a',
-        '[' => '%5b',
-        '\\\\' => '%5c',
-        ']' => '%5d',
-        '^' => '%5e',
-        '_' => '%5f',
-        '`' => '%60',
-        'a' => '%61',
-        'b' => '%62',
-        'c' => '%63',
-        'd' => '%64',
-        'e' => '%65',
-        'f' => '%66',
-        'g' => '%67',
-        'h' => '%68',
-        'i' => '%69',
-        'j' => '%6a',
-        'k' => '%6b',
-        'l' => '%6c',
-        'm' => '%6d',
-        'n' => '%6e',
-        'o' => '%6f', 
-        'p' => '%70',
-        'q' => '%71',
-        'r' => '%72',
-        's' => '%73',
-        't' => '%74',
-        'u' => '%75',
-        'v' => '%76',
-        'w' => '%77',
-        'x' => '%78',
-        'y' => '%79',
-        'z' => '%7a',
-        '{' => '%7b',
-        '|' => '%7c',
-        '}' => '%7d',
-        '~' => '%7e');
+include 'conecta_sql.php';
+
+$sql = "SELECT bloco, valencia FROM percent;";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$rows = $stmt->fetchAll();
+$num_reg = count($rows);
+if($num_reg>0){
+  foreach($rows as $key){
     
-        
+    $percentArray[$key['bloco']] = $key['valencia'];
+  }
+}
             $origem = $_POST["texto"];
+            //$origem = '%41%%6c%6f%5b%5d';
             $array = str_split($origem);
             $i = 0;
             $estado = 0;
             $destino = '';
             $pattern = '/[%]{1}[0-9A-Fa-f]{2}/m';
-            $chaves = array_keys($array_from_to);
+            $chaves = array_keys($percentArray);
     
             if($estado == 0){
               
@@ -113,27 +30,29 @@
                 $char0 = $array[$i];
                 $estado++;
               }
-            if($estado == 1){              
+            if($estado == 1){
               $char = $char0;
               $j = $i;
               $char .= $array[$j+1];
               $char .= $array[$j+2];
-              
+
+
               if(preg_match($pattern, $char)){
-              $charDecrypt = str_replace(array_values($array_from_to), array_keys($array_from_to), $char);
+              $charDecrypt = str_replace(array_values($percentArray), array_keys($percentArray), $char);
               
               $destino .= $charDecrypt;
               $i++;
               $i++;
     
               $estado=0;
-              } else {
-                  $destino .= $array[$i];
-                  $estado=0;
-              }               
-             }              
+              } else{
+                $destino .= $array[$i];
+                $estado=0;
+              } 
+              
+             }
+             $txtDesofuscado = $destino;
             }
-            $txtDesofuscado = $destino;
+            echo '{"sucesso":"true", "texto_ofuscado":"'. $txtDesofuscado . '"}';
         }
-        echo '{"sucesso":"true", "novo_texto":"'. $txtDesofuscado . '"}';
 ?>
