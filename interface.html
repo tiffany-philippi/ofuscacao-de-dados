@@ -34,11 +34,11 @@
 			});
 
 			function percent() {
-				var novo_texto = $('#origem').val();
+				var texto_ofuscado = $('#origem').val();
 				$.ajax({
 					url: 'percentDecrypt.php',
 					data: {
-						texto: novo_texto
+						texto: texto_ofuscado
 					},
 					timeout: 1200000,
 					async: false,
@@ -46,7 +46,7 @@
 					dataType: 'json',
 					success: function(retorno) {
 						if (retorno.sucesso == 'true') {
-							$('#resultURL').val(retorno.novo_texto);
+							$('#resultURL').val(retorno.texto_ofuscado);
 						} else {
 							$('#resultURL').html("deu errado");
 						}
