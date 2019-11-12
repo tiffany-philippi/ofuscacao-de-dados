@@ -56,12 +56,6 @@ a.active, a:hover {
 a.disabled {
   color: #5b6365 !important;
 }
-.background {
-  background: url("imge.jpg") no-repeat;
-  background-size: contain;
-  width: 100%;
-  height: 100%;
-}
 .nav-tabs, button {
   background-color: #422e64;
 }
