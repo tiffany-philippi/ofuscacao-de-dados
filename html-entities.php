@@ -269,6 +269,13 @@
             if ($array[$i] == ';') {
               $estado = 0;
               $temp .= $array[$i];
+              echo  "\nEstado: " . $estado . "\nTemp:" . $temp;
+
+
+
+              
+
+
             } else {
               if ($estado == 0) {
                 $destino .= $array[$i];
@@ -282,41 +289,31 @@
             $estado++;
           }
 
-        }
+        
           if($estado == 1){
-            //VERIFICA ATÉ A POSIÇÃO 7
             
-            echo "\n\nECHO TEMP0\n" . $temp ."\n\n";
-            $temp .= $array[2];
-            echo "\n\nECHO TEMP2\n" . $temp ."\n\n";
-            $temp .= $array[3];
-            echo "\n\nECHO TEMP3\n" . $temp ."\n\n";
-            $temp .= $array[4];
-            echo "\n\nECHO TEMP4\n" . $temp ."\n\n";
-            $temp .= $array[5];
-            echo "\n\nECHO TEMP5\n" . $temp ."\n\n";
-            $temp .= $array[6];
-            echo "\n\nECHO TEMP6\n" . $temp ."\n\n";
-            $temp .= $array[7];
-            echo "\n\nECHO TEMP7\n" . $temp ."\n\n";
+              if($estado == 1) {
+              echo  "\nEstado: " . $estado . "\nTemp:" . $temp;
+                if(str_replace(array_values($array_from_to), array_keys($array_from_to), $temp)){
 
+                $charDecrypt = str_replace(array_values($array_from_to), array_keys($array_from_to), $temp);
+                echo $charDecrypt . "\n";
+                $destino .= $charDecrypt;
+
+                } else {
+                  $destino .= $temp;
+                  $estado = 0;
+                }
+              }
             if($array[$i] == '&'){
-              // CONCATENAR TODOS OS CARACTERES ATÉ O MOMENTO E REINICIAR PRA ESTADO 0;
+              // CONCATENAR TODOS OS CARACTERES ATÉ O MOMENTO NA VARIAVEL PRINCIPAL
               $destino .= $temp;
+              $temp = '';
             }
 
             if($array[$i] == ';'){
 
-              if(str_replace(array_values($array_from_to), array_keys($array_from_to), $temp)){
-
-                $charDecrypt = str_replace(array_values($array_from_to), array_keys($array_from_to), $temp);
-
-                $destino .= $charDecrypt;
-
-              } else {
-                $destino .= $temp;
-                $estado = 0;
-              }
+              
 
             }
       
@@ -327,6 +324,6 @@
           }
   }
   // echo $destino;
-  echo '{"resultado": "' .  $destino .'"}';
+  echo "\n" . '{"resultado": "' .  $destino .'"}';
 
 ?>
