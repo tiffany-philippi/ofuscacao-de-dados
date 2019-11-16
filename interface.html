@@ -4,25 +4,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Desofuscando URLs</title>
 
-    <link
-      rel="stylesheet"
+    <link rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
+      crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
 
     <script>
       $(document).ready(function() {
@@ -69,44 +63,47 @@
   </head>
 
   <body>
-    <div class="banner"></div>
-    <div class="backg">
-      <img src="wukoLINK.png" alt="" />
-    </div>
-    <div class="backg-final">
-      <ul class="nav menu">
-        <li class="nav-item">
-          <a class="nav-link active" href="#desofuscar">Desofuscar</a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link disabled"
-            tabindex="-1"
-            aria-disabled="true"
-            href="#"
-            >Sobre</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link disabled"
-            tabindex="-1"
-            aria-disabled="true"
-            href="bloc;"
-            >Blog</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link disabled"
-            tabindex="-1"
-            aria-disabled="true"
-            href="#"
-            >Contato</a
-          >
-        </li>
-      </ul>
-    </div>
+      <div class="banner">
+          <div class="primeira-div">
+              <ul class="nav menu">
+                <li class="nav-item">
+                  <a class="nav-link active" href="interface.html">Desofuscar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled"
+                    tabindex="-1"
+                    aria-disabled="true"
+                    href="sobre.html">Sobre</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link "
+                    tabindex="-1"
+                    aria-disabled="true"
+                    href="casos.html">Casos de usuário</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled"
+                    tabindex="-1"
+                    aria-disabled="true"
+                    href="gestao.html">Gestão</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled"
+                    tabindex="-1"
+                    aria-disabled="true"
+                    href="contato.html" >Contato</a>
+                </li>
+              </ul>
+            </div>
+        <div class="backg-logo">
+          <div class="circle">
+            <img src="logo.png">
+          </div>
+        </div>
+        <div class="backg-glasses">
+          <img src="fac.png" alt="">
+        </div>
+      </div>
     <div class="hr" id="desofuscar"></div>
 
     <div class="container">
@@ -119,40 +116,31 @@
             <ul
               class="nav nav-pills tablist mb-3"
               id="pills-tab"
-              role="tablist"
-            >
+              role="tablist">
               <li class="nav-item">
-                <a
-                  class="nav-link active"
+                <a class="nav-link active"
                   id="pills-home-tab"
                   data-toggle="pill"
                   href="#pills-home"
                   role="tab"
                   aria-controls="pills-home"
-                  aria-selected="true"
-                  >Leitura de URL</a
-                >
+                  aria-selected="true">Leitura de URL</a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link"
+                <a class="nav-link"
                   id="pills-profile-tab"
                   data-toggle="pill"
                   href="#pills-profile"
                   role="tab"
                   aria-controls="pills-profile"
-                  aria-selected="false"
-                  >Upload de URL</a
-                >
+                  aria-selected="false">Upload de URL</a>
               </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
-              <div
-                class="tab-pane fade show active"
+              <div class="tab-pane fade show active"
                 id="pills-home"
                 role="tabpanel"
-                aria-labelledby="pills-home-tab"
-              >
+                aria-labelledby="pills-home-tab">
                 <form target="result">
                   <div class="form-group">
                     <label>URL:</label>
@@ -167,19 +155,16 @@
                         type="text"
                         name="origem"
                         id="origem"
-                        class="form-control origem"
-                      />
+                        class="form-control origem"/>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="res">Resultado:</label>
-                    <input
-                      type="text"
+                    <input type="text"
                       name="resultURL"
                       id="resultURL"
                       class="form-control"
-                      disabled
-                    />
+                      disabled/>
                   </div>
 
                   <div class="buttons">
@@ -206,8 +191,7 @@
                       type="file"
                       name="arquivos[]"
                       class="form-control arquivo"
-                      id="arq"
-                    />
+                      id="arq"/>
                   </div>
                 </div>
 

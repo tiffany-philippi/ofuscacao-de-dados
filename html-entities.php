@@ -1,6 +1,7 @@
 <?php
 
-    $array_from_to =  array('\'' => '&apos;',
+$array_from_to =  array(
+  '\'' => '&apos;',
   '<' => '&lt;',
   '>' => '&gt;',
   ' ' => '&nbsp;',
@@ -68,7 +69,7 @@
   'ß' => '&szlig;',
   'à' => '&agrave;',
   'á' => '&aacute;',
-   'â' => '&acirc;',
+  'â' => '&acirc;',
   'ã' => '&atilde;',
   'ä' => '&auml;',
   'å' => '&aring;',
@@ -229,7 +230,7 @@
   '⊆' => '&sube;',
   '⊇' => '&supe;',
   '⊕' => '&oplus;',
-   '⊗' => '&otimes;',
+  '⊗' => '&otimes;',
   '⊥' => '&perp;',
   '⋅' => '&sdot;',
   '⌈' => '&lceil;',
@@ -242,88 +243,80 @@
   '♠' => '&spades;',
   '♣' => '&clubs;',
   '♥' => '&hearts;',
-  '♦' => '&diams;');
+  '♦' => '&diams;'
+);
 
-  // print_r($array_from_to);
+// print_r($array_from_to);
 
-  $origem = "a&lt;&nbsp;&gt;";
-  //converter string pra array:
-  $array = str_split($origem);
-  $pattern = '/&([a-zA-Z0-9]+;)/m';
-  //$chaves será um array apenas dos caracteres para conversão
-  $chaves = array_keys($array_from_to);
+$origem = "a&lt;&nbsp;&gt;";
+//converter string pra array:
+$array = str_split($origem);
+$pattern = '/&([a-zA-Z0-9]+;)/m';
+//$chaves será um array apenas dos caracteres para conversão
+$chaves = array_keys($array_from_to);
 
-  $i = 0;
-  $estado = 0;
-  $destino = '';
+$i = 0;
+$estado = 0;
+$destino = '';
+$temp = '';
+$char = '';
 
-  print_r($array);
-  // print_r($chaves);
-
-      if($estado == 0){
-        
-        for($i; $i < sizeof($array); $i++) {
-
-          if($array[$i] != '&'){
-
-            if ($array[$i] == ';') {
-              $estado = 0;
-              $temp .= $array[$i];
-              echo  "\nEstado: " . $estado . "\nTemp:" . $temp;
+print_r($array);
+// print_r($chaves);
 
 
+for ($i; $i < sizeof($array); $i++) {
 
-              
+  if ($estado == 0) {
+    if ($array[$i] != '&') {
+
+      if ($array[$i] == ';') {
+        $estado = 0;
+        $temp .= $array[$i];
+        $char = $temp;
+        echo  "<br><br>ENCONTROU O ';'<br><br>Estado: " . $estado . "<br>Temp ->  " . $temp;
+        $temp = '';
+        echo  "<br><br>LIMPRA O TEMP E ATRIBUI PRA CHAR<br><br>Char: " . $char . "<br>Temp ->  " . $temp;
+      } else {
+        if ($estado == 0) {
+          $destino .= $array[$i];
+        } else {
+          $temp .= $array[$i];
+        }
+      }
+    } else {
+      //entra aqui SE FOR UM &
+      $temp = $array[$i];
+      $estado++;
+    }
 
 
-            } else {
-              if ($estado == 0) {
-                $destino .= $array[$i];
-              } else {
-                $temp .= $array[$i];
-              }
-            }
-          } else {
-            //entra aqui SE FOR UM &
-            $temp = $array[$i];
-            $estado++;
-          }
+    if ($estado == 1) {
 
-        
-          if($estado == 1){
-            
-              if($estado == 1) {
-              echo  "\nEstado: " . $estado . "\nTemp:" . $temp;
-                if(str_replace(array_values($array_from_to), array_keys($array_from_to), $temp)){
+      echo  "<br><br>TEMP DEVERIA VIR PREENCHIDO PELO CARACTER DE & ATÉ ;<br>Estado: " . $estado . "<br>Temp:" . $temp;
+      if (str_replace(array_values($array_from_to), array_keys($array_from_to), $temp)) {
 
-                $charDecrypt = str_replace(array_values($array_from_to), array_keys($array_from_to), $temp);
-                echo $charDecrypt . "\n";
-                $destino .= $charDecrypt;
+        $charDecrypt = str_replace(array_values($array_from_to), array_keys($array_from_to), $temp);
+        echo $charDecrypt . "<br>";
+        $destino .= $charDecrypt;
+      } else {
+        $destino .= $temp;
+        $estado = 0;
+      }
 
-                } else {
-                  $destino .= $temp;
-                  $estado = 0;
-                }
-              }
-            if($array[$i] == '&'){
-              // CONCATENAR TODOS OS CARACTERES ATÉ O MOMENTO NA VARIAVEL PRINCIPAL
-              $destino .= $temp;
-              $temp = '';
-            }
+      if ($array[$i] == '&') {
+        // CONCATENAR TODOS OS CARACTERES ATÉ O MOMENTO NA VARIAVEL PRINCIPAL
+        $destino .= $temp;
+        $temp = '';
+      }
 
-            if($array[$i] == ';'){
+      if ($array[$i] == ';') { }
 
-              
+      // $destino .= $charDecrypt;
 
-            }
-      
-            // $destino .= $charDecrypt;
-            
-            $estado=0;
-            }
-          }
+      $estado = 0;
+    }
   }
-  // echo $destino;
-  echo "\n" . '{"resultado": "' .  $destino .'"}';
-
-?>
+}
+// echo $destino;
+echo "<br><br>" . '{"resultado": "' .  $destino . '"}';
