@@ -245,78 +245,41 @@ $array_from_to =  array(
   '♥' => '&hearts;',
   '♦' => '&diams;'
 );
-
 // print_r($array_from_to);
-
 $origem = "a&lt;&nbsp;&gt;";
+// $origem = "alt;nbsp;gt;";
 //converter string pra array:
 $array = str_split($origem);
 $pattern = '/&([a-zA-Z0-9]+;)/m';
 //$chaves será um array apenas dos caracteres para conversão
 $chaves = array_keys($array_from_to);
-
 $i = 0;
 $estado = 0;
 $destino = '';
 $temp = '';
 $char = '';
-
 print_r($array);
 // print_r($chaves);
-
-
 for ($i; $i < sizeof($array); $i++) {
-
-  if ($estado == 0) {
-    if ($array[$i] != '&') {
-
-      if ($array[$i] == ';') {
-        $estado = 0;
-        $temp .= $array[$i];
-        $char = $temp;
-        echo  "<br><br>ENCONTROU O ';'<br><br>Estado: " . $estado . "<br>Temp ->  " . $temp;
-        $temp = '';
-        echo  "<br><br>LIMPRA O TEMP E ATRIBUI PRA CHAR<br><br>Char: " . $char . "<br>Temp ->  " . $temp;
-      } else {
-        if ($estado == 0) {
-          $destino .= $array[$i];
-        } else {
-          $temp .= $array[$i];
-        }
-      }
+  if($estado == 0) {
+    if($array[$i] != '&') {
+      $destino .= $array[$i];
     } else {
-      //entra aqui SE FOR UM &
-      $temp = $array[$i];
-      $estado++;
+      $temp .= $array[$i];
+      $estado = 1;
+    }
+  } else if ($estado == 1) {
+    if($array[$i] == ';') {
+      $destino .= $temp;
+      $estado = 0; 
+      echo $destino . "\n";
+    } else {
+
     }
 
-
-    if ($estado == 1) {
-
-      echo  "<br><br>TEMP DEVERIA VIR PREENCHIDO PELO CARACTER DE & ATÉ ;<br>Estado: " . $estado . "<br>Temp:" . $temp;
-      if (str_replace(array_values($array_from_to), array_keys($array_from_to), $temp)) {
-
-        $charDecrypt = str_replace(array_values($array_from_to), array_keys($array_from_to), $temp);
-        echo $charDecrypt . "<br>";
-        $destino .= $charDecrypt;
-      } else {
-        $destino .= $temp;
-        $estado = 0;
-      }
-
-      if ($array[$i] == '&') {
-        // CONCATENAR TODOS OS CARACTERES ATÉ O MOMENTO NA VARIAVEL PRINCIPAL
-        $destino .= $temp;
-        $temp = '';
-      }
-
-      if ($array[$i] == ';') { }
-
-      // $destino .= $charDecrypt;
-
-      $estado = 0;
-    }
+      
   }
 }
+  
 // echo $destino;
-echo "<br><br>" . '{"resultado": "' .  $destino . '"}';
+echo "\n\n" . '{"resultado": "' .  $destino . '"}'; 
