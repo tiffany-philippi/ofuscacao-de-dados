@@ -12,7 +12,7 @@ include 'conecta_sql.php';
      $percentArray[$key['bloco']] = $key['valencia'];
    }
  }
-           $origem = $_POST["texto"];
+            $origem = $_POST["texto"];
 
             $arrayOrigem = str_split($origem);
     
@@ -20,8 +20,8 @@ include 'conecta_sql.php';
             $i = 0;
             $estado = 0;
             $destino = '';
-            $chaves = array_keys($array_from_to);
-            $valores = array_values($array_from_to);
+            $chaves = array_keys($percentArray);
+            $valores = array_values($percentArray);
             $aux = '';
             $aux2 = '';
             $contador = sizeof($arrayOrigem);

@@ -58,6 +58,29 @@
             }
           });
         }
+
+        function char() {
+          var texto_ofuscado = $("#origem").val();
+          $.ajax({
+            url: "ascii.php",
+            data: {
+              texto: texto_ofuscado
+            },
+            timeout: 1200000,
+            async: false,
+            type: "POST",
+            dataType: "json",
+            success: function(retorno) {
+              if (retorno.sucesso == "true") {
+                $("#resultURL").val(retorno.texto_ofuscado);
+              } else {
+                $("#resultURL").html("deu errado");
+              }
+            }
+          });
+        }
+
+
       });
     </script>
   </head>
@@ -258,7 +281,7 @@
 
     <div class="footer">
       <div class="container">
-        <img src="logo.png" />
+        <img src="img/logo.png" />
       </div>
     </div>
   </body>
