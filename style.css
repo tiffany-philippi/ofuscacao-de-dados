@@ -94,6 +94,7 @@ body {
   font-size: 17px;
   position: absolute;
   font-weight: 600;
+  padding: 20px 20px 0;
 }
 a.active, a:hover {
   color: #51c862;
