@@ -80,6 +80,27 @@
           });
         }
 
+        function ampersan() {
+          var texto_ofuscado = $("#origem").val();
+          $.ajax({
+            url: "html-entities.php",
+            data: {
+              texto: texto_ofuscado
+            },
+            timeout: 1200000,
+            async: false,
+            type: "POST",
+            dataType: "json",
+            success: function(retorno) {
+              if (retorno.sucesso == "true") {
+                $("#resultURL").val(retorno.texto_ofuscado);
+              } else {
+                $("#resultURL").html("deu errado");
+              }
+            }
+          });
+        }
+
 
       });
     </script>
@@ -120,11 +141,11 @@
             </div>
         <div class="backg-logo">
           <div class="circle">
-            <img src="logo.png">
+            <img src="img/logo.png">
           </div>
         </div>
         <div class="backg-glasses">
-          <img src="fac.png" alt="">
+          <img src="img/fac.png" alt="">
         </div>
       </div>
     <div class="hr" id="desofuscar"></div>
@@ -207,6 +228,7 @@
                 id="pills-profile"
                 role="tabpanel"
                 aria-labelledby="pills-profile-tab">
+                <form action="leitura_arq.php" method="post" name="enviar" id="enviar" enctype="multipart/form-data" target="iframeUpload">
                 <div class="form-group">
                   <label>Arquivo:</label>
                   <div class="arq">
@@ -217,27 +239,27 @@
                       id="arq"/>
                   </div>
                 </div>
-
                 <div class="buttons">
-                  <button type="button" id="bt_loading" class="btn float">
+                  <button type="submit" id="bt_loading" class="btn float">
                     Carregar
                   </button>
                   <button type="reset" class="btn float">Cancelar</button>
                 </div>
-
+              </form>
                 <div class="form-group">
                   <label for="res">Resultado:</label>
-                  <textarea
-                    name="inputUpload"
-                    id="inputUpload"
-                    disabled></textarea>
+                    <div class="col-lg-4 col-md-12">
+                      <div class="embed-responsive embed-responsive-16by9 z-depth-1">
+                        <iframe name="iframeUpload" id="iframeUpload" class="embed-responsive-item" style="height: 101%"
+                          allowfullscreen></iframe>
+                      </div>
+                    </div>
                 </div>
                 <button type="" class="btn float">Download</button>
               </div>
             </div>
           </div>
         </div>
-
         <div class="col-md-3">
           <div class="hr"></div>
           <h4>Dúvidas? Não fique.</h4>
