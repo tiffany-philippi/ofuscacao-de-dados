@@ -245,41 +245,66 @@ $array_from_to =  array(
   '♥' => '&hearts;',
   '♦' => '&diams;'
 );
-// print_r($array_from_to);
-$origem = "a&lt;&nbsp;&gt;";
-// $origem = "alt;nbsp;gt;";
+$origem = "a&lt;a &nb&sp;b &gt;c";
 //converter string pra array:
 $array = str_split($origem);
 $pattern = '/&([a-zA-Z0-9]+;)/m';
 //$chaves será um array apenas dos caracteres para conversão
 $chaves = array_keys($array_from_to);
+$valores = array_values($array_from_to);
 $i = 0;
 $estado = 0;
+$count = 0;
 $destino = '';
 $temp = '';
 $char = '';
+$aux = 0;
 print_r($array);
-// print_r($chaves);
 for ($i; $i < sizeof($array); $i++) {
-  if($estado == 0) {
-    if($array[$i] != '&') {
+  if ($estado == 0) {
+    if ($array[$i] != '&') {
       $destino .= $array[$i];
     } else {
       $temp .= $array[$i];
       $estado = 1;
     }
-  } else if ($estado == 1) {
-    if($array[$i] == ';') {
-      $destino .= $temp;
-      $estado = 0; 
-      echo $destino . "\n";
+  }
+  if ($estado == 1) {
+    if ($array[$i] == "&" && $aux == 0) {
+      $aux = 1;
     } else {
+      if ($array[$i] == ';') {
 
+        $temp .= $array[$i];
+
+
+        $tester = str_replace($valores, $chaves, $temp, $count);
+
+        if ($count > 0) {
+
+
+          $charDecrypt = str_replace($valores, $chaves, $temp);
+          $destino .= $charDecrypt;
+          $estado = 0;
+          $count = 0;
+          $aux = 0;
+          $temp = '';
+        } else {
+          $destino .= $temp;
+          $estado = 0;
+          $count = 0;
+          $temp = '';
+          $aux = 0;
+        }
+      } else if ($array[$i] == '&') {
+        $destino .= $temp;
+        $estado = 0;
+        $count = 0;
+        $temp = '';
+        $aux = 0;
+      } else {
+        $temp .= $array[$i];
+      }
     }
-
-      
   }
 }
-  
-// echo $destino;
-echo "\n\n" . '{"resultado": "' .  $destino . '"}'; 
