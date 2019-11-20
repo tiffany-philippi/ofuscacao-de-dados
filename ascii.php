@@ -1,7 +1,7 @@
 <?php
 include 'conecta_sql.php';
 
- $sql = "SELECT bloco, valencia FROM percent;";
+ $sql = "SELECT bloco, valencia FROM char_code;";
  $stmt = $dbh->prepare($sql);
  $stmt->execute();
  $rows = $stmt->fetchAll();
@@ -9,7 +9,7 @@ include 'conecta_sql.php';
  if($num_reg>0){
    foreach($rows as $key){
     
-     $percentArray[$key['bloco']] = $key['valencia'];
+     $charArray[$key['bloco']] = $key['valencia'];
    }
  }
             $origem = $_POST["texto"];
@@ -20,8 +20,8 @@ include 'conecta_sql.php';
             $i = 0;
             $estado = 0;
             $destino = '';
-            $chaves = array_keys($percentArray);
-            $valores = array_values($percentArray);
+            $chaves = array_keys($charArray);
+            $valores = array_values($charArray);
             $aux = '';
             $aux2 = '';
             $contador = sizeof($arrayOrigem);
