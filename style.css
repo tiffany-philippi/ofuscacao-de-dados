@@ -241,6 +241,16 @@ h4 {
   margin-bottom: 15px;
 }
 
+.img-grid {
+  height: 200px;
+}
+
+.text-grid {
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 1500px) {
   .oculos {
     height: 600px;
