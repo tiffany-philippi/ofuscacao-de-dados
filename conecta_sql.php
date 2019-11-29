@@ -1,5 +1,5 @@
 <?php
-$dsn = "mysql:dbname=wukodb;host=localhost";
+$dsn = "mysql:dbname=ofusca_db;host=localhost";
 $usr = "root";
 $senha = "";
 try{
