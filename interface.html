@@ -229,31 +229,29 @@
                 role="tabpanel"
                 aria-labelledby="pills-profile-tab">
                 <form action="leitura_arq.php" method="post" name="enviar" id="enviar" enctype="multipart/form-data" target="iframeUpload">
-                <div class="form-group">
-                  <label>Arquivo:</label>
-                  <div class="arq">
-                    <input
-                      type="file"
-                      name="arquivos[]"
-                      class="form-control arquivo"
-                      id="arq"/>
+                  <div class="form-group">
+                    <!-- <label>Arquivo:</label>
+                    <div class="arq custom-file-label">
+                      <input type="file" name="arquivos[]" class="form-control custom-file-input arquivo" id="arq"/>
+                    </div> -->
+
+                    <div class="custom-file">
+                        <input type="file" name="arquivos[]" class="custom-file-input" id="arq">
+                        <label class="custom-file-label" for="arq">Escolha o arquivo</label>
+                      </div>
+
                   </div>
-                </div>
-                <div class="buttons">
-                  <button type="submit" id="bt_loading" class="btn float">
-                    Carregar
-                  </button>
-                  <button type="reset" class="btn float">Cancelar</button>
-                </div>
-              </form>
+                  <div class="buttons">
+                    <button type="submit" id="bt_loading" class="btn float">
+                      Carregar
+                    </button>
+                    <button type="reset" class="btn float">Cancelar</button>
+                  </div>
+                </form>
                 <div class="form-group">
                   <label for="res">Resultado:</label>
-                    <div class="col-lg-4 col-md-12">
-                      <div class="embed-responsive embed-responsive-16by9 z-depth-1">
-                        <iframe name="iframeUpload" id="iframeUpload" class="embed-responsive-item" style="height: 101%"
-                          allowfullscreen></iframe>
-                      </div>
-                    </div>
+                  <iframe name="iframeUpload" id="iframeUpload" class="embed-responsive-item" style="height: 101%"
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </div>

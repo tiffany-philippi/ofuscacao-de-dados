@@ -110,7 +110,7 @@ a {
   background-color: #422e64;
 }
 .tablist .nav-link {
-  color: #fff;
+  color: #fff !important;
 }
 .tablist .nav-link.active {
   background-color: #f68285;
@@ -150,10 +150,10 @@ button {
 iframe {
   display: block;
   width: 100%;
-  background-color: #fff;
+  background-color: #e9ecef;
   border-radius: 3px;
-  border: 1px solid #ced4da;
-  height: 100% !important;
+  border: 1px solid #ced4da !important;
+  height: 70px !important;
 }
 #inputUpload {
   display: block;
