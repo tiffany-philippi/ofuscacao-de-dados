@@ -196,18 +196,13 @@ h4 {
   color: #192525;
 }
 .footer {
-  /* border-top: 1px solid #5a9c92; */
   width: 100%;
   margin-top: 130px;
-  /* background-color: #5a9c92; */
-  /* border-bottom: 2px solid #fff; */
-  /* border-top: 1px solid #242b31; */
+  background-color: #422e64;
   padding: 0.5rem;
 }
 .footer .container {
   color: #242b31;  
-  /* background-color: #5a9c92; */
-  /* border-top: 1px solid #fff; */
 }
 
 .cards {
@@ -250,15 +245,14 @@ h4 {
   display: flex;
   align-items: center;
 }
+.text-grid.right {
+  text-align: right;
+}
 
 @media (min-width: 1500px) {
-  .oculos {
-    height: 600px;
-  }
-  
-  .oculos img {
-    float: left;
-    margin: 113px 135px 0 0;
+  .backg-glasses img {
+    margin-top: 120px;
+    margin-left: 0;
   }
 }
 
