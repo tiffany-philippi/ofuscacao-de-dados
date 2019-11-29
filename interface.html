@@ -156,8 +156,7 @@
               id="pills-tab"
               role="tablist">
               <li class="nav-item">
-                <a class="nav-link active"
-                  id="pills-home-tab"
+                <a class="nav-link active" id="pills-home-tab"
                   data-toggle="pill"
                   href="#pills-home"
                   role="tab"
@@ -175,10 +174,7 @@
               </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
-              <div class="tab-pane fade show active"
-                id="pills-home"
-                role="tabpanel"
-                aria-labelledby="pills-home-tab">
+              <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <form target="result">
                   <div class="form-group">
                     <label>URL:</label>
@@ -189,10 +185,7 @@
                         <option value="ampersan">HTML Entities</option>
                         <option value="char">ASCII Code</option>
                       </select>
-                      <input
-                        type="text"
-                        name="origem"
-                        id="origem"
+                      <input type="text" name="origem" id="origem"
                         class="form-control origem"/>
                     </div>
                   </div>
@@ -217,37 +210,27 @@
                   </div>
                 </form>
               </div>
-              <div
-                class="tab-pane fade"
-                id="pills-profile"
-                role="tabpanel"
-                aria-labelledby="pills-profile-tab">
+              <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <form action="leitura_arq.php" method="post" name="enviar" id="enviar" enctype="multipart/form-data" target="iframeUpload">
-                <div class="form-group">
-                  <label>Arquivo:</label>
-                  <div class="arq">
-                    <input
-                      type="file"
-                      name="arquivos[]"
-                      class="form-control arquivo"
-                      id="arq"/>
+                  <div class="form-group">
+
+                    <div class="custom-file">
+                        <input type="file" name="arquivos[]" class="custom-file-input" id="arq">
+                        <label class="custom-file-label" for="arq">Escolha o arquivo</label>
+                      </div>
+
                   </div>
-                </div>
-                <div class="buttons">
-                  <button type="submit" id="bt_loading" class="btn float">
-                    Carregar
-                  </button>
-                  <button type="reset" class="btn float">Cancelar</button>
-                </div>
-              </form>
+                  <div class="buttons">
+                    <button type="submit" id="bt_loading" class="btn float">
+                      Carregar
+                    </button>
+                    <button type="reset" class="btn float">Cancelar</button>
+                  </div>
+                </form>
                 <div class="form-group">
                   <label for="res">Resultado:</label>
-                    <div class="col-lg-4 col-md-12">
-                      <div class="embed-responsive embed-responsive-16by9 z-depth-1">
-                        <iframe name="iframeUpload" id="iframeUpload" class="embed-responsive-item" style="height: 101%"
-                          allowfullscreen></iframe>
-                      </div>
-                    </div>
+                  <iframe name="iframeUpload" id="iframeUpload" class="embed-responsive-item" style="height: 101%"
+                    allowfullscreen></iframe>
                 </div>
               </div>
             </div>
@@ -256,13 +239,31 @@
         <div class="col-md-3">
           <div class="hr"></div>
           <h4>Dúvidas? Não fique.</h4>
-          <!-- <div class="tab-content" id="pills-tabContent">
-            <div
-              class="tab-pane fade"
-              id="pills-profile"
-              role="tabpanel"
-              aria-labelledby="pills-profile-tab"> -->
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
               <div class="steps">
+                <div class="number">1</div>
+                <div class="text">
+                </div>
+              </div>
+              <div class="steps">
+                <div class="number">2</div>
+                <div class="text">
+                </div>
+              </div>
+              <div class="steps">
+                <div class="number">3</div>
+                <div class="text">
+                </div>
+              </div>
+              <div class="steps">
+                <div class="number">4</div>
+                <div class="text">
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="steps">
                 <div class="number">1</div>
                 <div class="text">
                   <p>Selecione a linguagem da URL ofuscada.</p>
@@ -288,8 +289,8 @@
                   </p>
                 </div>
               </div>
-            <!-- </div>
-          </div> -->
+          </div>
+          </div>
         </div>
       </div>
     </div>
