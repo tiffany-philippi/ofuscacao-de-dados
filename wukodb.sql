@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Nov-2019 às 12:23
+-- Tempo de geração: 30-Nov-2019 às 00:38
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.3.8
 
@@ -397,6 +397,27 @@ INSERT INTO `char_code` (`id`, `bloco`, `valencia`) VALUES
 (93, '|', 'char(124)'),
 (94, ']', 'char(125)'),
 (95, '~', 'char(126)');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `contato`
+--
+
+CREATE TABLE `contato` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(55) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
+  `assunto` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `contato`
+--
+
+INSERT INTO `contato` (`id`, `nome`, `email`, `telefone`, `assunto`) VALUES
+(0, 'Jonatas Lousa', 'jonatasrj21@gmail.com', '48996435626', 'TESTE');
 
 -- --------------------------------------------------------
 
