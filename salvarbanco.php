@@ -10,7 +10,7 @@ include 'conecta_sql.php';
         $telefone = $_REQUEST['telefone'];
         $assunto = $_REQUEST['texto'];
 
-        $sql = "INSERT INTO `usuario`(`nome`, `email`, `telefone`, `assunto`)
+        $sql = "INSERT INTO `contato`(`nome`, `email`, `telefone`, `assunto`)
         VALUES ('".$nome."', '".$email."', '".$telefone."', '".$assunto."')";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
