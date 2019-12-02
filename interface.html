@@ -149,7 +149,7 @@
         <h3>Desofuscamento de URL</h3>
       </div>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="card">
             <ul
               class="nav nav-pills tablist mb-3"
@@ -175,121 +175,105 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <form target="result">
-                  <div class="form-group">
-                    <label>URL:</label>
-                    <div class="url">
-                      <select name="select" id="opcoes">
-                        <option value="0">Selecione o Tipo de Ofuscamento</option>
-                        <option value="percent">Percent Code</option>
-                        <option value="ampersan">HTML Entities</option>
-                        <option value="char">ASCII Code</option>
-                      </select>
-                      <input type="text" name="origem" id="origem"
-                        class="form-control origem"/>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="res">Resultado:</label>
-                    <input type="text"
-                      name="resultURL"
-                      id="resultURL"
-                      class="form-control"
-                      disabled/>
-                  </div>
-
-                  <div class="buttons">
-                    <button
-                      type="button"
-                      id="btn_carregarURL"
-                      name="btn_carregarURL"
-                      class="btn float">
-                      Carregar
-                    </button>
-                    <button type="reset" class="btn float">Cancelar</button>
-                  </div>
-                </form>
-              </div>
-              <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                <form action="leitura_arq.php" method="post" name="enviar" id="enviar" enctype="multipart/form-data" target="iframeUpload">
-                  <div class="form-group">
-
-                    <div class="custom-file">
-                        <input type="file" name="arquivos[]" class="custom-file-input" id="arq">
-                        <label class="custom-file-label" for="arq">Escolha o arquivo</label>
+                <div class="row">
+                  <div class="col-md-8">
+                    <form target="result">
+                      <div class="form-group">
+                        <label>URL:</label>
+                        <div class="url">
+                          <select name="select" id="opcoes">
+                            <option value="0">Tipo de Ofuscamento</option>
+                            <option value="percent">Percent Code</option>
+                            <option value="ampersan">HTML Entities</option>
+                            <option value="char">ASCII Code</option>
+                          </select>
+                          <input type="text" name="origem" id="origem"
+                            class="form-control origem"/>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="res">Resultado:</label>
+                        <input type="text" name="resultURL" id="resultURL" class="form-control" disabled/>
                       </div>
 
+                      <div class="buttons">
+                        <button type="button" id="btn_carregarURL" name="btn_carregarURL" class="btn float">
+                          Carregar
+                        </button>
+                        <button type="reset" class="btn float">Cancelar</button>
+                      </div>
+                    </form>
                   </div>
-                  <div class="buttons">
-                    <button type="submit" id="bt_loading" class="btn float">
-                      Carregar
-                    </button>
-                    <button type="reset" class="btn float">Cancelar</button>
+
+                  <div class="col-md-3">
+                    <h4>Dúvidas? Não fique.</h4>
+                    <div class="steps">
+                      <div class="number">1</div>
+                      <div class="text">
+                        <p>Selecione o tipo de ofuscamento da URL.</p>
+                      </div>
+                    </div>
+                    <div class="steps">
+                      <div class="number">2</div>
+                        <p>Insira a URL no campo em branco</p>
+                      </div>
+                    <div class="steps">
+                      <div class="number">3</div>
+                      <div class="text">
+                        <p>Veja o resultado da URL desofuscada no campo desabilitado.</p>
+                      </div>
+                    </div>
                   </div>
-                </form>
-                <div class="form-group">
-                  <label for="res">Resultado:</label>
-                  <iframe name="iframeUpload" id="iframeUpload" class="embed-responsive-item" style="height: 101%"
-                    allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="row">
+                  <div class="col-md-8">
+                    <form action="leitura_arq.php" method="post" name="enviar" id="enviar" enctype="multipart/form-data" target="iframeUpload">
+                      <div class="form-group">
+                        <div class="custom-file">
+                            <input type="file" name="arquivos[]" class="custom-file-input" id="arq">
+                            <label class="custom-file-label" for="arq">Escolha o arquivo</label>
+                          </div>
+                      </div>
+    
+                      <div class="buttons">
+                        <button type="submit" id="bt_loading" class="btn float">
+                          Carregar
+                        </button>
+                        <button type="reset" class="btn float">Cancelar</button>
+                      </div>
+                    </form>
+                    
+                    <div class="form-group result-iframe">
+                      <label for="res">Resultado:</label>
+                      <iframe name="iframeUpload" id="iframeUpload" class="embed-responsive-item" style="height: 101%"
+                        allowfullscreen></iframe>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <h4>Dúvidas? Não fique.</h4>
+                    <div class="steps">
+                      <div class="number">1</div>
+                      <div class="text">
+                        <p>Escolha um arquivo</p>
+                      </div>
+                    </div>
+                    <div class="steps">
+                      <div class="number">2</div>
+                      <div class="text">
+                        <p>Veja o resultado da URL desofuscada no campo desabilitado.</p>
+                      </div>
+                    </div>
+                    <div class="steps">
+                      <div class="number">3</div>
+                        <p>O botão "Cancelar" limpa todos os campos</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="hr"></div>
-          <h4>Dúvidas? Não fique.</h4>
-          <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-              <div class="steps">
-                <div class="number">1</div>
-                <div class="text">
-                </div>
-              </div>
-              <div class="steps">
-                <div class="number">2</div>
-                <div class="text">
-                </div>
-              </div>
-              <div class="steps">
-                <div class="number">3</div>
-                <div class="text">
-                </div>
-              </div>
-              <div class="steps">
-                <div class="number">4</div>
-                <div class="text">
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <div class="steps">
-                <div class="number">1</div>
-                <div class="text">
-                  <p>Selecione a linguagem da URL ofuscada.</p>
-                </div>
-              </div>
-              <div class="steps">
-                <div class="number">2</div>
-                <div class="text">
-                  <p>Selecione a linguagem da URL ofuscada.</p>
-                </div>
-              </div>
-              <div class="steps">
-                <div class="number">3</div>
-                <div class="text">
-                  <p>Insira a URL no campo em branco</p>
-                </div>
-              </div>
-              <div class="steps">
-                <div class="number">4</div>
-                <div class="text">
-                  <p>
-                    Veja o resultado da URL desofuscada no campo desabilitado.
-                  </p>
-                </div>
-              </div>
-          </div>
           </div>
         </div>
       </div>
